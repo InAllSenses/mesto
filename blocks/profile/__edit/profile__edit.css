@@ -1,0 +1,22 @@
+.profile__edit {
+    background-image: url(../../../../images/Редактирование.png);
+    color: #fff;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 24px;
+    height: 24px;
+    
+    box-sizing: border-box;
+    border: 1px solid #fff;
+
+    margin: auto 0 auto 18px;
+}
+
+@media screen and (max-width: 798px) {
+    .profile__edit {
+        width: 18px;
+        height: 18px;
+        margin-left: 10px;
+    }
+}
