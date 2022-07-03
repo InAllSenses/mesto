@@ -1,7 +1,7 @@
 .elements__element__like {
     display: flex;
-    max-width: 246px;
-    max-height: 23px;
+    /* max-width: 246px;
+    max-height: 23px; */
     margin: 25px 15px 31px 21px;
     flex-direction: row;
     justify-content: space-between;

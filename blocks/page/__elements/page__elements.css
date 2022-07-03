@@ -1,0 +1,18 @@
+.page__elements {
+    margin: 51px 200px 0;
+
+}
+
+@media screen and (max-width: 1100px){
+    .page__elements {
+    margin: 47px 75px 0;
+}
+}
+
+@media screen and (max-width: 798px){
+    .page__elements {
+    margin: 36px 19px 0;
+    display: flex;
+    justify-content: center;
+}
+}

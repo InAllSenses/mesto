@@ -1,14 +1,21 @@
 .elements {
 list-style: none;
-max-height: 744px;
-margin: 47px 0 0;
+padding: 0;
+margin: 0;
+/* max-height: 744px; */
 display: grid;
 gap: 20px 17px;
-grid-template-columns: repeat(3, 282px);
-padding: 0;
+grid-template-columns: repeat(3, 1fr);
 }
 
-@media screen and (max-width: 320px){
+@media screen and (max-width: 798px){
     .elements {
-    grid-template-columns: 282px;
+    grid-template-columns: repeat(2, 1fr);
+}
+}
+
+@media screen and (max-width: 568px){
+    .elements {
+    grid-template-columns: 1fr;
+}
 }
