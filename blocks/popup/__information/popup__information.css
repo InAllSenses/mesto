@@ -1,0 +1,14 @@
+.popup__information {
+    font-family: Inter;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000;
+    margin: 0;
+    padding: 0;
+}
+
+.popup__information:2th-child{
+    margin-top: 30px;
+
+}

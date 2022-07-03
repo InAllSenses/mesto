@@ -1,0 +1,13 @@
+.popup__button {
+    height: 50px;
+    width: 358px;
+    background-color: #000;
+    position: absolute;
+    left: 36px;
+    bottom: 37px;
+    border-radius: 2px;
+    z-index: 5;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}

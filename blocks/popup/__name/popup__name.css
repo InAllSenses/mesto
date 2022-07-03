@@ -1,0 +1,10 @@
+.popup__name {
+    height: 27px;
+    width: 358px;
+    margin: 111px 36px 0;
+    background-image: url(../../../images/Короткая-линия.png);
+    background-repeat: no-repeat;
+    background-position: bottom;
+    color: rgba(0, 0, 0, 0.2); 
+    overflow: hidden;
+}
