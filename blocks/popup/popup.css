@@ -1,9 +1,4 @@
 .popup {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    display: flex;
     justify-content: center;
     align-items: center;
     content: "";
@@ -15,5 +10,9 @@
     left: 0;
     right: 0;
 
-    /* display: none; */
+    display: none;
+}
+
+.popup_opened {
+    display: flex;
 }

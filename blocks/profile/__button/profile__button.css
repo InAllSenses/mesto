@@ -11,6 +11,11 @@
     align-items: center;
 }
 
+.profile__button:hover {
+    opacity: 0.6;
+    transition: 0.5;
+}
+
 @media screen and (max-width: 798px) {
     .profile__button {
         margin: 36px 0 0;

@@ -5,3 +5,8 @@
     min-width: 22px;
     min-height: 19px;
 }
+
+.elements__element__heart:hover {
+    opacity: 0.5;
+    transition: 0.5;
+}

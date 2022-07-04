@@ -11,3 +11,18 @@
     align-items: center;
     justify-content: center;
 }
+
+.popup__button:hover {
+    opacity: 0.8;
+    transition: 0.5;
+}
+
+
+@media screen and (max-width: 568px){
+    .popup__button {
+        width: 238px;
+        height: 46px;
+        left: 22px;
+        bottom: 25px;
+}
+}
