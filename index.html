@@ -84,19 +84,15 @@
          </ul>
     </section>
 
-<section class="popup page__popup">
+<section class="popup">
     <div class="popup__container">
-        <div class="popup__close"></div>
+        <button class="popup__close"></button>
         <h1 class="popup__title">Редактировать профиль</h1>
-        <div class="popup__name">
-            <p class="popup__information">Жак-Ив Кусто</p>
-        </div>
-        <div class="popup__profession">
-            <p class="popup__information">Исследователь океана</p>
-        </div>
-        <div class="popup__button">
-            <p class="popup__save">Сохранить</p>
-        </div>
+        <form class="popup__information">
+            <input type="text" class="popup__name" id="popupName" name="nameInput"  placeholder="Имя">
+            <input type="text" class="popup__profession" id="popupName" name="nameInput"  placeholder="Профессия">
+            <button class="popup__button">Сохранить</button>
+        </form>
     </div>
 </section>
 
@@ -104,8 +100,8 @@
         <p class="footer__copyright">&copy; 2022 Елена Кобзарь</p>
     </footer>
 
-    <script src="script.js"></script>
-    
+    <script src="./scripts/index.js"></script>
+
 </body>
 
 </html>

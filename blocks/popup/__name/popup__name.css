@@ -1,18 +1,9 @@
+
 .popup__name {
-    height: 27px;
-    width: 358px;
-    margin: 111px 36px 0;
-    background-image: url(../../../images/Короткая-линия.png);
-    background-repeat: no-repeat;
-    background-position: bottom;
-    color: rgba(0, 0, 0, 0.2); 
-    overflow: hidden;
-}
+    border-top-style: none;
+    border-left-style: none;
+    border-right-style: none;
+    border-bottom: 1px solid;
+    border-color: rgba(0, 0, 0, 0.2);
 
-
-@media screen and (max-width: 568px){
-    .popup__name {
-        width: 238px;
-        margin: 122px 22px 0;
-}
 }
