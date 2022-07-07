@@ -33,7 +33,7 @@
 [Выполнено сглаживание шрифтов через значение **optimizeLegibility**](https://doka.guide/css/text-rendering/)
 
 **_Проект в гитхабе_**
-[https://inallsenses.github.io/russian-travel/index.html]
+[https://inallsenses.github.io/mesto/index.html]
 
 ## Что можно улучшить:
 * Добавить дополнительные точки излома
