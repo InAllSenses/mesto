@@ -1,12 +1,10 @@
-
 .popup__information {
-    /* height: 27px; */
     width: 358px;
     position: absolute;
     top: 111px;
     left: 36px;
 
-    font-family: Inter;
+    font-family: 'Inter', Arial, sans-serif;
     font-weight: 400;
     font-size: 14px;
     line-height: 17px;
@@ -19,10 +17,10 @@
     padding: 0;
 }
 
-@media screen and (max-width: 568px){
+@media screen and (max-width: 568px) {
     .popup__information {
         width: 238px;
         top: 122px;
         left: 22px
-}
+    }
 }

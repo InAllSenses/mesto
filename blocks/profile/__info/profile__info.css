@@ -2,8 +2,6 @@
     margin-left: 30px;
     display: flex;
     flex-direction: column;
-
-    /* max-width: calc(100% - 150px - 120px - 25px - 25px);  */
 }
 
 @media screen and (max-width: 798px) {

@@ -15,11 +15,11 @@
     transition: 0.5;
 }
 
-@media screen and (max-width: 568px){
+@media screen and (max-width: 568px) {
     .popup__close {
         height: 20px;
         width: 20px;
         top: -36px;
         right: 0;
-}
+    }
 }
