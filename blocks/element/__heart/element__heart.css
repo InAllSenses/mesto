@@ -1,8 +1,10 @@
 .element__heart {
     background-image: url(../../../images/Сердце.png);
     background-repeat: no-repeat;
+    background-color: rgba(0, 0, 0, 0.0);
     min-width: 22px;
     min-height: 19px;
+    border: none;
 }
 
 .element__heart:hover {

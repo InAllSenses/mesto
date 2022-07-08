@@ -7,11 +7,11 @@ const nameElement = document.querySelector(".profile__title");
 const popupNameElement = document.querySelector(".popup__name");
 
 const jobElement = document.querySelector(".profile__subtitle");
-const popupJobElement = document.querySelector(".popup__profession");
+const popupJobElement = document.querySelector(".popup__name_profession");
 
 const showPopup = function () {
   popupNameElement.value = nameElement.textContent;
-  popupElement.classList.add("popup_opened");
+
 
   popupJobElement.value = jobElement.textContent;
   popupElement.classList.add("popup_opened");
@@ -23,7 +23,6 @@ const closePopup = function () {
 
 const applyPopup = function () {
   nameElement.textContent = popupNameElement.value;
-  closePopup();
 
   jobElement.textContent = popupJobElement.value;
   closePopup();

@@ -1,8 +1,9 @@
 .profile__edit {
-    background-image: url(../../../../images/Редактирование.png);
-    color: #fff;
+    background-image: url(../../../images/Редактирование.png);
+    background-color: rgba(0, 0, 0, 0.0);
     background-repeat: no-repeat;
     background-position: center;
+    background-size: 10px;
 
     width: 24px;
     height: 24px;
@@ -23,5 +24,6 @@
         width: 18px;
         height: 18px;
         margin-left: 10px;
+        background-size: 7.5px;
     }
 }

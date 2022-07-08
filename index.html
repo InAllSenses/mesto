@@ -6,14 +6,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Место</title>
-    <link rel="stylesheet" href=".//pages/index.css">
+    <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
 
     <header class="header">
         <img class="header__logo" src="./images/Лого.png" alt="логотип">
-        <div class="header__line"></div>
     </header>
 
     <main>
@@ -22,13 +21,12 @@
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <div class="profile__edit"></div>
+                    <button type="button" class="profile__edit"></button>
                 </div>
-                <h2 class="profile__subtitle">Исследователь океана</h2>
+                <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <div class="profile__button">
-                <img class="profile__button-add" src="./images/Плюс.png" alt="плюс">
-            </div>
+            <button type="button" class="profile__button">
+            </button>
         </section>
 
         <section class="elements page__elements">
@@ -37,7 +35,7 @@
                     <img class="element__image" src="./images/замок.png" alt="замок на горе">
                     <div class="element__like">
                         <h2 class="element__title">Карачаевск</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
 
@@ -45,7 +43,7 @@
                     <img class="element__image" src="./images/пейзаж.png" alt="пейзаж">
                     <div class="element__like">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
 
@@ -53,7 +51,7 @@
                     <img class="element__image" src="./images/гора.png" alt="замок на горе">
                     <div class="element__like">
                         <h2 class="element__title">Домбай</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
 
@@ -61,7 +59,7 @@
                     <img class="element__image" src="./images/пейзаж.png" alt="пейзаж">
                     <div class="element__like">
                         <h2 class="element__title">Гора Эльбрус</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
 
@@ -69,7 +67,7 @@
                     <img class="element__image" src="./images/гора.png" alt="замок на горе">
                     <div class="element__like">
                         <h2 class="element__title">Домбай</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
 
@@ -77,24 +75,25 @@
                     <img class="element__image" src="./images/замок.png" alt="замок на горе">
                     <div class="element__like">
                         <h2 class="element__title">Карачаево-Черкессия</h2>
-                        <div class="element__heart"></div>
+                        <button type="button" class="element__heart"></button>
                     </div>
                 </li>
             </ul>
         </section>
+    </main>
 
-        <section class="popup">
+        <div class="popup">
             <div class="popup__container">
-                <button class="popup__close"></button>
+                <button type="reset" class="popup__close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__information">
-                    <input type="text" class="popup__name" placeholder="Имя">
-                    <input type="text" class="popup__profession" placeholder="Профессия">
-                    <button class="popup__button">Сохранить</button>
+                <form name="id-information" class="popup__information">
+                    <input type="text" name="name" class="popup__name" placeholder="Имя">
+                    <input type="text" name="profession" class="popup__name popup__name_profession" placeholder="Профессия">
+                    <button type="submit" class="popup__button">Сохранить</button>
                 </form>
             </div>
-        </section>
-    </main>
+        </div>
+
 
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Елена Кобзарь</p>
