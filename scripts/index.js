@@ -4,10 +4,10 @@ const popupCloseButtonElement = popupElement.querySelector(".popup__close");
 const popupOpenButtonElement = document.querySelector(".profile__edit");
 
 const nameElement = document.querySelector(".profile__title");
-const popupNameElement = document.querySelector(".popup__name");
+const popupNameElement = document.querySelector(".popup__input");
 
 const jobElement = document.querySelector(".profile__subtitle");
-const popupJobElement = document.querySelector(".popup__name_profession");
+const popupJobElement = document.querySelector(".popup__input_type_profession");
 
 const showPopup = function () {
   popupNameElement.value = nameElement.textContent;

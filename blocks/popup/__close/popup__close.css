@@ -1,5 +1,5 @@
 .popup__close {
-    background-image: url(../../../images/Крест.png);
+    background-image: url(../../../images/cross.svg);
     background-repeat: no-repeat;
     position: absolute;
     background-size: cover;

@@ -2,7 +2,7 @@
     width: 150px;
     height: 50px;
 
-    background-image: url("../../../images/Плюс.png");
+    background-image: url(../../../images/plus.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-size: 22px;
@@ -22,7 +22,7 @@
     transition: 0.5;
 }
 
-@media screen and (max-width: 798px) {
+@media screen and (max-width: 850px) {
     .profile__button {
         margin: 36px 0 0;
         width: 100%;
