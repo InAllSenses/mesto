@@ -1,0 +1,8 @@
+.popup-image__position {
+    display: block;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 0;
+}

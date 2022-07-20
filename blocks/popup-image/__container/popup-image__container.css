@@ -1,0 +1,7 @@
+.popup-image__container {
+display: flex;
+position: fixed;
+justify-content: center;
+width: 100vh;
+height: 100vh;
+}
