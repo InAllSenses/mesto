@@ -29,10 +29,9 @@
             </button>
         </section>
 
-        <section class="elements page__elements">
+        <div class="elements page__elements">
             <ul class="elements__grid">
-
-                <template class="element-default-card">
+                <template class="template__element">
                     <li class="element">
                         <img class="element__image" src="./images/castle.png" alt="замок на горе">
                         <button class="element__trashcan"></button>
@@ -42,68 +41,14 @@
                         </div>
                     </li>
                 </template>
-
-                <!-- <li class="element">
-                    <img class="element__image" src="./images/castle.png" alt="замок на горе">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Карачаевск</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/landscape.png" alt="пейзаж">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Гора Эльбрус</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/mountain.png" alt="замок на горе">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Домбай</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li> -->
-
-                <!-- <li class="element">
-                    <img class="element__image" src="./images/landscape.png" alt="пейзаж">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Гора Эльбрус</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/mountain.png" alt="замок на горе">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Домбай</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li>
-
-                <li class="element">
-                    <img class="element__image" src="./images/castle.png" alt="замок на горе">
-                    <button class="element__trashcan"></button>
-                    <div class="element__like">
-                        <h2 class="element__title">Карачаево-Черкессия</h2>
-                        <button type="button" class="element__heart"></button>
-                    </div>
-                </li> -->
             </ul>
-        </section>
+        </div>
     </main>
 
 
-    <div class="popup popup__add">
-        <div class="popup__container popup__container-add">
-            <button type="button" class="popup__close popup__close-add"></button>
+    <div class="popup popup-add">
+        <div class="popup__container popup-add__container">
+            <button type="button" class="popup__close popup-add__close"></button>
             <h2 class="popup__title">Новое место</h2>
             <form name="id-information" class="popup__information">
                 <input type="text" name="field-title" class="popup__input popup__input_type_title"
@@ -115,10 +60,9 @@
         </div>
     </div>
 
-
-    <div class="popup popup__edit">
-        <div class="popup__container popup__container-edit">
-            <button type="button" class="popup__close popup__close-edit"></button>
+    <div class="popup popup-edit">
+        <div class="popup__container popup-edit__container">
+            <button type="button" class="popup__close popup-edit__close"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="id-information" class="popup__information">
                 <input type="text" name="field-name" class="popup__input popup__input_type_name" placeholder="Имя">
@@ -130,13 +74,11 @@
     </div>
 
     <div class="popup popup-image">
-        <div class="popup-image__container">
+        <figure class="popup-image__container">
             <button type="button" class="popup__close popup-image__close"></button>
-            <figure class="popup-image__position">
-                <img class="popup-image__image" src="" alt="">
-                <figcaption class="popup-image__title">подпись</figcaption>
-            </figure>
-        </div>
+            <img class="popup-image__picture" src="images/default-image.png" alt="ваша картинка не загрузилась">
+            <figcaption class="popup-image__title">подпись</figcaption>
+        </figure>
     </div>
 
     <footer class="footer">
