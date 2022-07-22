@@ -9,5 +9,9 @@
     left: 0;
     right: 0;
 
-    display: none;
+    display: flex;
+    transition: visibility .6s, opacity .8s ease-in-out;
+    
+    visibility: hidden;
+    opacity: 0;
 }

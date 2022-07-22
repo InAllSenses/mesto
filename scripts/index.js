@@ -1,17 +1,16 @@
 const selectors = {
   popupEdit: ".popup-edit",
-  openEdit: ".profile__edit",
-  closeEdit: ".popup-edit__close",
+  popupOpenEdit: ".profile__edit",
+  popupCloseEdit: ".popup-edit__close",
   nameEdit: ".profile__title",
   jobEdit: ".profile__subtitle",
  
   popupAdd: ".popup-add",
-  openAdd: ".profile__add",
-  closeAdd: ".popup-add__close",
-  createAdd: ".popup__button_create",
+  popupOpenAdd: ".profile__add",
+  popupCloseAdd: ".popup-add__close",
 
   popupImage: ".popup-image",
-  closeImage: ".popup-image__close",
+  popupCloseImage: ".popup-image__close",
   titleImage: ".popup-image__title",
   pictureImage: ".popup-image__picture",
   
@@ -21,7 +20,7 @@ const selectors = {
   userTitle: ".popup__input_type_title",
   userLink: ".popup__input_type_link",
   
-  ul: ".elements__grid",
+  placesWrap: ".elements__grid",
   template: ".template__element",
   item: ".element",
   name: ".element__title",
@@ -32,25 +31,62 @@ const selectors = {
 };
 
 
+// VARIABLE
 // Popup-Edit
 
 const popupEdit = document.querySelector(selectors.popupEdit);
-const popupOpenEditButtonElement = document.querySelector(selectors.openEdit);
-const popupCloseEditButtonElement = popupEdit.querySelector(selectors.closeEdit);
+const popupOpenEditButtonElement = document.querySelector(selectors.popupOpenEdit);
+const popupCloseEditButtonElement = popupEdit.querySelector(selectors.popupCloseEdit);
 
 const nameEditElement = document.querySelector(selectors.nameEdit);
 const userNameEditElement = document.querySelector(selectors.userName);
 const jobEditElement = document.querySelector(selectors.jobEdit);
 const userJobEditElement = document.querySelector(selectors.userJob);
 
+// Popup-Add
+
+const popupAdd = document.querySelector(selectors.popupAdd);
+const popupOpenAddButtonElement = document.querySelector(selectors.popupOpenAdd);
+const popupCloseAddButtonElement = popupAdd.querySelector(selectors.popupCloseAdd);
+
+const userTitleAddElement = document.querySelector(selectors.userTitle);
+const userLinkAddElement = document.querySelector(selectors.userLink);
+
+// Popup-Image
+
+const popupImage = document.querySelector(selectors.popupImage);
+const popupCloseImage = document.querySelector(selectors.popupCloseImage);
+const link = document.querySelector(selectors.link);
+
+const popupImageTitle = document.querySelector(selectors.titleImage)
+const popupImagePicture = document.querySelector(selectors.pictureImage)
+
+// Template
+
+const placesWrap = document.querySelector(selectors.placesWrap);
+
+
+// FUNCTION
+// General
+
+function showPopup(popup) {
+  popup.classList.add(selectors.popupVision);
+}
+
+function hidePopup(popup) {
+  popup.classList.remove(selectors.popupVision);
+}
+
+// Popup-Edit
+
 const showPopupEdit = function () {
   userNameEditElement.value = nameEditElement.textContent;
   userJobEditElement.value = jobEditElement.textContent;
-  popupEdit.classList.add(selectors.popupVision);
+  showPopup(popupEdit);
 };
 
 const closePopupEdit = function () {
-  popupEdit.classList.remove(selectors.popupVision);
+  hidePopup(popupEdit);
 };
 
 const applyPopupEdit = function () {
@@ -59,68 +95,32 @@ const applyPopupEdit = function () {
   closePopupEdit();
 };
 
-popupEdit.addEventListener("submit", (event) => {
-  event.preventDefault();
-  applyPopupEdit();
-});
-
-popupOpenEditButtonElement.addEventListener("click", showPopupEdit);
-popupCloseEditButtonElement.addEventListener("click", closePopupEdit);
-
 // Popup-Add
-
-const popupAdd = document.querySelector(selectors.popupAdd);
-const popupOpenAddButtonElement = document.querySelector(selectors.openAdd);
-const popupCloseAddButtonElement = popupAdd.querySelector(selectors.closeAdd);
-
-const userTitleAddElement = document.querySelector(selectors.userTitle);
-const userLinkAddElement = document.querySelector(selectors.userLink);
 
 const showPopupAdd = function () {
   userTitleAddElement.value = "";
   userLinkAddElement.value = "";
-  
-  popupAdd.classList.add(selectors.popupVision);
+  showPopup(popupAdd);
 };
 
 const closePopupAdd = function () {
-  popupAdd.classList.remove(selectors.popupVision);
+  hidePopup(popupAdd);
 };
-
-popupOpenAddButtonElement.addEventListener("click", showPopupAdd);
-popupCloseAddButtonElement.addEventListener("click", closePopupAdd);
-
 
 // Popup-Image
 
-const popupImage = document.querySelector(selectors.popupImage);
-const closeImage = document.querySelector(selectors.closeImage);
-const link = document.querySelector(selectors.link);
-
-const popupImageTitle = document.querySelector(selectors.titleImage)
-const popupImagePicture = document.querySelector(selectors.pictureImage)
-
 function showPopupImage(titleImage, image_src) {
-  popupImage.classList.add(selectors.popupVision);
-  // title
+  showPopup(popupImage);
   popupImageTitle.textContent = titleImage;
-  // source
   popupImagePicture.src = image_src;
   popupImagePicture.alt = titleImage;
 }
 
 function closePopupImage() {
-  popupImage.classList.remove(selectors.popupVision);
+  hidePopup(popupImage);
 }
 
-closeImage.addEventListener("click", () => {
-  closePopupImage();
-});
-
-
 // Template
-
-const ul = document.querySelector(selectors.ul);
 
 function createCard(name, link) {
   const elementTemplate = document.querySelector(selectors.template);
@@ -142,61 +142,62 @@ function createCard(name, link) {
   newElementLink.src = link;
   newElementLink.alt = name;
 
-  let buttonLike = newElement.querySelector(selectors.buttonLike);
+  const buttonLike = newElement.querySelector(selectors.buttonLike);
   buttonLike.addEventListener("click", () => {
     buttonLike.classList.toggle(selectors.buttonLikeActive);
   });
 
-  let buttonRemove = newElement.querySelector(selectors.buttonRemove);
+  const buttonRemove = newElement.querySelector(selectors.buttonRemove);
   buttonRemove.addEventListener("click", () => {
     newElement.remove();
   });
 
-  ul.prepend(newElement);
-
   newElementLink.addEventListener("click", () => {
     showPopupImage(name, link);
   });
+
+  return newElement;
 }
 
-function addUserElements() {
-  popupAdd.addEventListener("submit", function (event) {
-    event.preventDefault();
-    createCard(userTitleAddElement.value, userLinkAddElement.value)
-    closePopupAdd();
-  });
+function addCardToPage(card) {
+  placesWrap.prepend(card);
 }
 
 function createIntialCards() {
-  const initialCards = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ];
-
-  initialCards.forEach((card) => createCard(card.name, card.link));
+  initialCards.forEach((cardDescription) => {
+    const newCard = createCard(cardDescription.name, cardDescription.link);
+    addCardToPage(newCard);
+  });
 }
 
-addUserElements();
+// PROCESSING
+// Popup-Edit
+
+popupOpenEditButtonElement.addEventListener("click", showPopupEdit);
+popupCloseEditButtonElement.addEventListener("click", closePopupEdit);
+popupEdit.addEventListener("submit", (event) => {
+  event.preventDefault();
+  applyPopupEdit();
+});
+
+// Popup-Add
+
+popupOpenAddButtonElement.addEventListener("click", showPopupAdd);
+popupCloseAddButtonElement.addEventListener("click", closePopupAdd);
+
+// Popup-Image
+
+popupCloseImage.addEventListener("click", () => {
+  closePopupImage();
+});
+
+// Template
+
+popupAdd.addEventListener("submit", function (event) {
+  event.preventDefault();
+  const newCard = createCard(userTitleAddElement.value, userLinkAddElement.value)
+  addCardToPage(newCard);
+  closePopupAdd();
+});
+
 createIntialCards();
