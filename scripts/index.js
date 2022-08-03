@@ -27,7 +27,9 @@ const selectors = {
   link: ".element__image",
   buttonRemove: ".element__trashcan",
   buttonLike: ".element__heart",
-  buttonLikeActive: "element__heart_active"
+  buttonLikeActive: "element__heart_active",
+
+  popupVisibleSelector: ".popup_opened"
 };
 
 
@@ -69,12 +71,21 @@ const placesWrap = document.querySelector(selectors.placesWrap);
 // FUNCTION
 // General
 
+function handleEscapeButton(evt) {
+  if (evt.key === 'Escape') {
+    const popupElement = document.querySelector(selectors.popupVisibleSelector);
+    hidePopup(popupElement);
+  }
+}
+
 function showPopup(popup) {
   popup.classList.add(selectors.popupVision);
+  document.addEventListener('keydown', handleEscapeButton);
 }
 
 function hidePopup(popup) {
   popup.classList.remove(selectors.popupVision);
+  document.removeEventListener('keydown', handleEscapeButton);
 }
 
 // Popup-Edit
@@ -201,3 +212,14 @@ popupAdd.addEventListener("submit", function (event) {
 });
 
 createIntialCards();
+
+// function keyClosePopup(evt) {
+//     if (evt.key === 'Esc') {
+//     hidePopup();
+//    }
+//  };
+
+
+//  popupCloseAddButtonElement.addEventListener('keydown', keyClosePopup);
+
+

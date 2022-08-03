@@ -1,14 +1,3 @@
-// function keyClosePopup(evt) {
-//     if (evt.key === 'Esc') {
-//     hidePopup();
-//    }
-//  };
-
-
-//  popupCloseAddButtonElement.addEventListener('keydown', keyClosePopup);
-
-
-
 
 function getAllForms(settings) {
   const forms = document.querySelectorAll(settings.formSelector);
