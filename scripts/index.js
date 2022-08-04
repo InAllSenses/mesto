@@ -78,13 +78,23 @@ function handleEscapeButton(evt) {
   }
 }
 
+function handleOverlayClick(evt) {
+  if (evt.target.classList.contains(selectors.popupVision)) {
+    hidePopup(evt.target);
+  }
+}
+
 function showPopup(popup) {
   popup.classList.add(selectors.popupVision);
+  popup.addEventListener('click', handleOverlayClick);
+
   document.addEventListener('keydown', handleEscapeButton);
 }
 
 function hidePopup(popup) {
   popup.classList.remove(selectors.popupVision);
+  popup.removeEventListener('click', handleOverlayClick);
+
   document.removeEventListener('keydown', handleEscapeButton);
 }
 
