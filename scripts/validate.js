@@ -56,9 +56,11 @@ function verifyButtonState(buttonElement, inputList, settings) {
 
   if (hasInvalid) {
     buttonElement.classList.add(settings.buttonDisabledClass);
+    buttonElement.setAttribute("disabled", "disabled");
   }
   else {
     buttonElement.classList.remove(settings.buttonDisabledClass);
+    buttonElement.removeAttribute("disabled");
   }
 }
 
@@ -87,14 +89,23 @@ function enableFormValidation(formElement, settings) {
   });
 }
 
-function verifyPopupState(popupElement, settings) {
+function verifyPopupButtonState(popupElement, settings) {
   const formElement = popupElement.querySelector(settings.formSelector);
   if (formElement) {
     const inputList = getFormInputs(formElement, settings);
     const buttonElement = formElement.querySelector(settings.submitButtonSelector);
-  
+
     verifyButtonState(buttonElement, inputList, settings);
   }
+}
+
+function verifyPopupInputsState(popupElement, settings) {
+  const formElement = popupElement.querySelector(settings.formSelector);
+  const inputList = getFormInputs(formElement, settings);
+
+  inputList.forEach(function (inputElement) {
+    verifyInputState(inputElement, formElement, settings);
+  });
 }
 
 

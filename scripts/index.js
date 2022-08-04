@@ -5,6 +5,7 @@ const selectors = {
   nameEdit: ".profile__title",
   jobEdit: ".profile__subtitle",
  
+  formSelector: ".popup__information",
   popupAdd: ".popup-add",
   popupOpenAdd: ".profile__add",
   popupCloseAdd: ".popup-add__close",
@@ -50,6 +51,7 @@ const userJobEditElement = document.querySelector(selectors.userJob);
 const popupAdd = document.querySelector(selectors.popupAdd);
 const popupOpenAddButtonElement = document.querySelector(selectors.popupOpenAdd);
 const popupCloseAddButtonElement = popupAdd.querySelector(selectors.popupCloseAdd);
+const formAddElement = popupAdd.querySelector(selectors.formSelector);
 
 const userTitleAddElement = document.querySelector(selectors.userTitle);
 const userLinkAddElement = document.querySelector(selectors.userLink);
@@ -89,8 +91,6 @@ function showPopup(popup) {
   popup.addEventListener('click', handleOverlayClick);
 
   document.addEventListener('keydown', handleEscapeButton);
-
-  verifyPopupState(popup, validationSettings);
 }
 
 function hidePopup(popup) {
@@ -105,6 +105,9 @@ function hidePopup(popup) {
 const showPopupEdit = function () {
   userNameEditElement.value = nameEditElement.textContent;
   userJobEditElement.value = jobEditElement.textContent;
+
+  verifyPopupInputsState(popupEdit, validationSettings);
+  verifyPopupButtonState(popupEdit, validationSettings);
   showPopup(popupEdit);
 };
 
@@ -121,8 +124,9 @@ const applyPopupEdit = function () {
 // Popup-Add
 
 const showPopupAdd = function () {
-  userTitleAddElement.value = "";
-  userLinkAddElement.value = "";
+  formAddElement.reset();
+
+  verifyPopupButtonState(popupAdd, validationSettings);
   showPopup(popupAdd);
 };
 
@@ -132,10 +136,10 @@ const closePopupAdd = function () {
 
 // Popup-Image
 
-function showPopupImage(titleImage, image_src) {
+function showPopupImage(titleImage, imageSrc) {
   showPopup(popupImage);
   popupImageTitle.textContent = titleImage;
-  popupImagePicture.src = image_src;
+  popupImagePicture.src = imageSrc;
   popupImagePicture.alt = titleImage;
 }
 
