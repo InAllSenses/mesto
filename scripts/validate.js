@@ -88,6 +88,7 @@ function enableValidation(settings) {
   });
 }
 
+
 enableValidation({
   formSelector: ".popup__information",
   inputSelector: ".popup__input",

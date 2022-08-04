@@ -10,7 +10,7 @@
     right: 0;
 
     display: flex;
-    transition: visibility .6s, opacity .8s ease-in-out;
+    transition: opacity .8s ease-in-out;
     
     visibility: hidden;
     opacity: 0;

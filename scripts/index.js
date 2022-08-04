@@ -151,14 +151,6 @@ function createCard(name, link) {
   const newElementName = newElement.querySelector(selectors.name);
   const newElementLink = newElement.querySelector(selectors.link);
 
-  if (!name) {
-    name = "Ошибка 404";
-  }
-
-  if (!link) {
-    link = "images/default-image.png";
-  }
-
   newElementName.textContent = name;
   newElementLink.src = link;
   newElementLink.alt = name;
@@ -222,14 +214,3 @@ popupAdd.addEventListener("submit", function (event) {
 });
 
 createIntialCards();
-
-// function keyClosePopup(evt) {
-//     if (evt.key === 'Esc') {
-//     hidePopup();
-//    }
-//  };
-
-
-//  popupCloseAddButtonElement.addEventListener('keydown', keyClosePopup);
-
-
