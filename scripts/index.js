@@ -89,6 +89,8 @@ function showPopup(popup) {
   popup.addEventListener('click', handleOverlayClick);
 
   document.addEventListener('keydown', handleEscapeButton);
+
+  verifyPopupState(popup, validationSettings);
 }
 
 function hidePopup(popup) {

@@ -3,8 +3,6 @@
     width: 358px;
     background-color: #000;
     border: none;
-    z-index: 5;
-    display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Inter', Arial, sans-serif;
@@ -12,7 +10,7 @@
     font-size: 18px;
     line-height: 22px;
     color: #fff;
-    margin: 18px 0 0;
+    margin: 18px 0 36px;
     padding: 0;
 }
 
@@ -26,8 +24,8 @@
     .popup__button {
         width: 238px;
         height: 46px;
-        left: 22px;
-        bottom: 25px;
+
+        margin: 15px 0 25px;
         font-size: 14px;
         line-height: 17px;
     }

@@ -1,3 +1,13 @@
+const validationSettings = {
+  formSelector: ".popup__information",
+  inputSelector: ".popup__input",
+  submitButtonSelector: ".popup__button",
+
+  inputErrorClass: "popup__input_error",
+  errorVisibleClass: "popup__input-error_visible",
+  buttonDisabledClass: "popup__button_disabled"
+};
+
 
 function getAllForms(settings) {
   const forms = document.querySelectorAll(settings.formSelector);
@@ -77,6 +87,16 @@ function enableFormValidation(formElement, settings) {
   });
 }
 
+function verifyPopupState(popupElement, settings) {
+  const formElement = popupElement.querySelector(settings.formSelector);
+  if (formElement) {
+    const inputList = getFormInputs(formElement, settings);
+    const buttonElement = formElement.querySelector(settings.submitButtonSelector);
+  
+    verifyButtonState(buttonElement, inputList, settings);
+  }
+}
+
 
 function enableValidation(settings) {
   // найти все формы
@@ -89,12 +109,4 @@ function enableValidation(settings) {
 }
 
 
-enableValidation({
-  formSelector: ".popup__information",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-
-  inputErrorClass: "popup__input_error",
-  errorVisibleClass: "popup__input-error_visible",
-  buttonDisabledClass: "popup__button_disabled"
-});
+enableValidation(validationSettings);

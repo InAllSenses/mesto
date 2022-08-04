@@ -3,4 +3,6 @@
     background-color: white;
     color: #000000;
     opacity: 0.2;
+
+    pointer-events: none;
 }

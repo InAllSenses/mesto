@@ -21,11 +21,11 @@
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
-                    <button type="button" class="profile__edit"></button>
+                    <button type="button" class="profile__edit clickable-button"></button>
                 </div>
                 <p class="profile__subtitle">Исследователь океана</p>
             </div>
-            <button type="button" class="profile__add">
+            <button type="button" class="profile__add clickable-button">
             </button>
         </section>
 
@@ -33,11 +33,11 @@
             <ul class="elements__grid">
                 <template class="template__element">
                     <li class="element">
-                        <img class="element__image" src="./images/castle.png" alt="замок на горе">
-                        <button class="element__trashcan"></button>
+                        <img class="element__image clickable-button" src="./images/castle.png" alt="замок на горе">
+                        <button class="element__trashcan clickable-button"></button>
                         <div class="element__like">
                             <h2 class="element__title"></h2>
-                            <button type="button" class="element__heart"></button>
+                            <button type="button" class="element__heart clickable-button"></button>
                         </div>
                     </li>
                 </template>
@@ -48,7 +48,7 @@
 
     <div class="popup popup-add">
         <div class="popup__container popup-add__container">
-            <button type="button" class="popup__close popup-add__close"></button>
+            <button type="button" class="popup__close popup-add__close clickable-button"></button>
             <h2 class="popup__title">Новое место</h2>
             <form name="id-information" class="popup__information">
                 <input id="input-place" type="text" name="field-title" class="popup__input popup__input_type_title"
@@ -57,14 +57,14 @@
                 <input id="input-url" type="url" name="field-link" class="popup__input popup__input_type_link"
                     placeholder="Ссылка на картинку" required novalidate>
                 <span class="popup__input-error input-url-error"></span>
-                <button type="submit" class="popup__button popup__button_create">Создать</button>
+                <button type="submit" class="popup__button popup__button_create clickable-button">Создать</button>
             </form>
         </div>
     </div>
 
     <div class="popup popup-edit">
         <div class="popup__container popup-edit__container">
-            <button type="button" class="popup__close popup-edit__close"></button>
+            <button type="button" class="popup__close popup-edit__close clickable-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="id-information" class="popup__information">
                 <input id="input-name" type="text" name="field-name" class="popup__input popup__input_type_name" placeholder="Имя" minlength="2" maxlength="40" required novalidate>
@@ -72,14 +72,14 @@
                 <input id="input-profession" type="text" name="field-profession" class="popup__input popup__input_type_profession"
                     placeholder="Профессия" minlength="2" maxlength="200" required novalidate>
                 <span class="popup__input-error input-profession-error"></span>
-                <button type="submit" class="popup__button popup__button_save">Сохранить</button>
+                <button type="submit" class="popup__button popup__button_save clickable-button">Сохранить</button>
             </form>
         </div>
     </div>
 
     <div class="popup popup-image">
         <figure class="popup-image__container">
-            <button type="button" class="popup__close popup-image__close"></button>
+            <button type="button" class="popup__close popup-image__close clickable-button"></button>
             <img class="popup-image__picture" src="" alt="картинка не загрузилась">
             <figcaption class="popup-image__title">подпись</figcaption>
         </figure>
