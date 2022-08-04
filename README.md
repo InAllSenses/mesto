@@ -14,10 +14,13 @@
 3 изображения img и backround-image(оптимизированные по весу и разрешению).
 4 рабочие кнопки.
 5 форму изменющую имя и профессию пользователя.
-
+6 форму позволяющую пользователю добавить своё неазвание места и фотографию.
+7 подсказки о неправильно введёной информации в поля. 
 
 ## Cайт написан по готовому макету загруженном в Figma
 (https://www.figma.com/file/2cn9N9jSkmxD84oJik7xL7/JavaScript.-Sprint-4?node-id=0%3A1)
+(https://www.figma.com/file/bjyvbKKJN2naO0ucURl2Z0/JavaScript.-Sprint-5?node-id=0%3A1)
+(https://www.figma.com/file/kRVLKwYG3d1HGLvh7JFWRT/JavaScript.-Sprint-6?node-id=0%3A1)
 
 * Дизайн страницы выполнен для разной ширины: _320, 768 и 1280px_
 * Адаптивная вёрстка с помощью инструмента _@media_
