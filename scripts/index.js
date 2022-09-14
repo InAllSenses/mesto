@@ -1,3 +1,6 @@
+import { initialCards, Card } from './Card.js';
+import { validationSettings, FormValidator, makeFormValidatorByPopup } from './FormValidator.js';
+
 const selectors = {
   popupEdit: ".popup-edit",
   popupOpenEdit: ".profile__edit",
@@ -23,12 +26,7 @@ const selectors = {
   
   placesWrap: ".elements__grid",
   template: ".template__element",
-  item: ".element",
-  name: ".element__title",
-  link: ".element__image",
-  buttonRemove: ".element__trashcan",
-  buttonLike: ".element__heart",
-  buttonLikeActive: "element__heart_active",
+  
 
   popupVisibleSelector: ".popup_opened"
 };
@@ -38,6 +36,7 @@ const selectors = {
 // Popup-Edit
 
 const popupEdit = document.querySelector(selectors.popupEdit);
+const validatorEdit = makeFormValidatorByPopup(popupEdit);
 const popupOpenEditButtonElement = document.querySelector(selectors.popupOpenEdit);
 const popupCloseEditButtonElement = popupEdit.querySelector(selectors.popupCloseEdit);
 
@@ -49,6 +48,7 @@ const userJobEditElement = document.querySelector(selectors.userJob);
 // Popup-Add
 
 const popupAdd = document.querySelector(selectors.popupAdd);
+const validatorAdd = makeFormValidatorByPopup(popupAdd);
 const popupOpenAddButtonElement = document.querySelector(selectors.popupOpenAdd);
 const popupCloseAddButtonElement = popupAdd.querySelector(selectors.popupCloseAdd);
 const formAddElement = popupAdd.querySelector(selectors.formSelector);
@@ -106,8 +106,8 @@ const showPopupEdit = function () {
   userNameEditElement.value = nameEditElement.textContent;
   userJobEditElement.value = jobEditElement.textContent;
 
-  verifyPopupInputsState(popupEdit, validationSettings);
-  verifyPopupButtonState(popupEdit, validationSettings);
+  validatorEdit.verifyPopupInputsState();
+  validatorEdit.verifyPopupButtonState();
   showPopup(popupEdit);
 };
 
@@ -126,7 +126,7 @@ const applyPopupEdit = function () {
 const showPopupAdd = function () {
   formAddElement.reset();
 
-  verifyPopupButtonState(popupAdd, validationSettings);
+  validatorAdd.verifyPopupButtonState();
   showPopup(popupAdd);
 };
 
@@ -149,42 +149,14 @@ function closePopupImage() {
 
 // Template
 
-function createCard(name, link) {
-  const elementTemplate = document.querySelector(selectors.template);
-  const element = elementTemplate.content.querySelector(selectors.item);
-  const newElement = element.cloneNode(true);
-
-  const newElementName = newElement.querySelector(selectors.name);
-  const newElementLink = newElement.querySelector(selectors.link);
-
-  newElementName.textContent = name;
-  newElementLink.src = link;
-  newElementLink.alt = name;
-
-  const buttonLike = newElement.querySelector(selectors.buttonLike);
-  buttonLike.addEventListener("click", () => {
-    buttonLike.classList.toggle(selectors.buttonLikeActive);
-  });
-
-  const buttonRemove = newElement.querySelector(selectors.buttonRemove);
-  buttonRemove.addEventListener("click", () => {
-    newElement.remove();
-  });
-
-  newElementLink.addEventListener("click", () => {
-    showPopupImage(name, link);
-  });
-
-  return newElement;
-}
-
 function addCardToPage(card) {
   placesWrap.prepend(card);
 }
 
 function createIntialCards() {
   initialCards.forEach((cardDescription) => {
-    const newCard = createCard(cardDescription.name, cardDescription.link);
+    const card = new Card(cardDescription.name, cardDescription.link, selectors.template, showPopupImage);
+    const newCard = card.createCard();
     addCardToPage(newCard);
   });
 }
@@ -214,9 +186,14 @@ popupCloseImage.addEventListener("click", () => {
 
 popupAdd.addEventListener("submit", function (event) {
   event.preventDefault();
-  const newCard = createCard(userTitleAddElement.value, userLinkAddElement.value)
+
+  const card = new Card(userTitleAddElement.value, userLinkAddElement.value, selectors.template, showPopupImage);
+  const newCard = card.createCard();
   addCardToPage(newCard);
+  
   closePopupAdd();
 });
 
 createIntialCards();
+validatorEdit.enableValidation();
+validatorAdd.enableValidation();
