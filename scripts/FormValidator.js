@@ -71,7 +71,7 @@ class FormValidator {
     const buttonElement = this._getFormButton();
   
     // назначаем обработчик изменений, который изменяет состояние инпата и состояние кнопки
-    inputElement.addEventListener("input", (inputEvent) => {
+    inputElement.addEventListener("input", () => {
       this._verifyInputState(inputElement);
       this._verifyButtonState(buttonElement, inputList);
     });
