@@ -1,18 +1,9 @@
-const validationSettings = {
-  formSelector: ".popup__information",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__button",
-
-  inputErrorClass: "popup__input_error",
-  errorVisibleClass: "popup__input-error_visible",
-  buttonDisabledClass: "popup__button_disabled",
-};
-
-
 class FormValidator {
   constructor(validationSettings, formElement) {
     this.settings = validationSettings;
     this.formElement = formElement;
+    this.buttonElement = this.formElement.querySelector(this.settings.submitButtonSelector);
+    this.inputList = this._getFormInputs();
   }
 
   _findErrorElement(inputElement) {
@@ -48,17 +39,17 @@ class FormValidator {
     return Array.from(inputs);
   }
   
-  _verifyButtonState(buttonElement, inputList) {
-    const hasInvalid = inputList.some((inputElement) => {
+  _verifyButtonState() {
+    const hasInvalid = this.inputList.some((inputElement) => {
       return !inputElement.validity.valid;
     });
   
     if (hasInvalid) {
-      buttonElement.classList.add(this.settings.buttonDisabledClass);
-      buttonElement.setAttribute("disabled", "disabled");
+      this.buttonElement.classList.add(this.settings.buttonDisabledClass);
+      this.buttonElement.setAttribute("disabled", "disabled");
     } else {
-      buttonElement.classList.remove(this.settings.buttonDisabledClass);
-      buttonElement.removeAttribute("disabled");
+      this.buttonElement.classList.remove(this.settings.buttonDisabledClass);
+      this.buttonElement.removeAttribute("disabled");
     }
   }
   
@@ -66,53 +57,35 @@ class FormValidator {
     return this.formElement.querySelector(this.settings.submitButtonSelector);
   }
   
-  _setInputListeners(inputElement, inputList) {
-    // найти кнопку
-    const buttonElement = this._getFormButton();
-  
+  _setInputListeners(inputElement) {
     // назначаем обработчик изменений, который изменяет состояние инпата и состояние кнопки
     inputElement.addEventListener("input", () => {
       this._verifyInputState(inputElement);
-      this._verifyButtonState(buttonElement, inputList);
+      this._verifyButtonState();
     });
   }
   
   enableValidation() {
-    // найти все инпаты
-    const inputList = this._getFormInputs();
   
     // для каждого инпата
-    inputList.forEach((inputElement) => {
-      this._setInputListeners(inputElement, inputList);
+    this.inputList.forEach((inputElement) => {
+      this._setInputListeners(inputElement);
     });
   }
   
   verifyPopupButtonState() {
     if (this.formElement) {
-      const inputList = this._getFormInputs();
-      const buttonElement = this.formElement.querySelector(
-        this.settings.submitButtonSelector
-      );
-  
-      this._verifyButtonState(buttonElement, inputList);
+      this._verifyButtonState();
     }
   }
   
   verifyPopupInputsState() {
-    const inputList = this._getFormInputs();
   
-    inputList.forEach((inputElement) => {
+    this.inputList.forEach((inputElement) => {
       this._verifyInputState(inputElement);
     });
   }
 };
 
 
-function makeFormValidatorByPopup(popupElement) {
-  const formElement = popupElement.querySelector(validationSettings.formSelector);
-  const validator = new FormValidator(validationSettings, formElement);
-  return validator;
-}
-
-
-export { validationSettings, FormValidator, makeFormValidatorByPopup };
+export { FormValidator };

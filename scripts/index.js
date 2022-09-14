@@ -1,5 +1,6 @@
-import { initialCards, Card } from './Card.js';
-import { validationSettings, FormValidator, makeFormValidatorByPopup } from './FormValidator.js';
+import { Card } from './Card.js';
+import { FormValidator } from './FormValidator.js';
+import { validationSettings, initialCards } from './constants.js';
 
 const selectors = {
   popupEdit: ".popup-edit",
@@ -30,7 +31,6 @@ const selectors = {
 
   popupVisibleSelector: ".popup_opened"
 };
-
 
 // VARIABLE
 // Popup-Edit
@@ -72,6 +72,13 @@ const placesWrap = document.querySelector(selectors.placesWrap);
 // FUNCTION
 // General
 
+
+function makeFormValidatorByPopup(popupElement) {
+  const formElement = popupElement.querySelector(validationSettings.formSelector);
+  const validator = new FormValidator(validationSettings, formElement);
+  return validator;
+}
+
 function handleEscapeButton(evt) {
   if (evt.key === 'Escape') {
     const popupElement = document.querySelector(selectors.popupVisibleSelector);
@@ -105,6 +112,7 @@ const showPopupEdit = function () {
   userNameEditElement.value = nameEditElement.textContent;
   userJobEditElement.value = jobEditElement.textContent;
 
+  // Пробовала удалить эту строку, но тогда перестаёт корректно работать: Если открыть форму редактирования профиля, удалить все данные и не сохранить, то при повторном открытии формы редактирования останутся подсказки и красное подчёркивание. https://disk.yandex.ru/i/sc7QqEkrBgXdXg
   validatorEdit.verifyPopupInputsState();
   validatorEdit.verifyPopupButtonState();
   showPopup(popupEdit);
