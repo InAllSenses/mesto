@@ -60,7 +60,6 @@ const userLinkAddElement = document.querySelector(selectors.userLink);
 
 const popupImage = document.querySelector(selectors.popupImage);
 const popupCloseImage = document.querySelector(selectors.popupCloseImage);
-const link = document.querySelector(selectors.link);
 
 const popupImageTitle = document.querySelector(selectors.titleImage)
 const popupImagePicture = document.querySelector(selectors.pictureImage)

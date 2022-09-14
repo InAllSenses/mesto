@@ -55,7 +55,7 @@ class Card {
     return this.newElement;
   }
 
-  _addEventListeners(newCard) {
+  _addEventListeners() {
     this.buttonLike.addEventListener("click", () => { this._clickLike(); });
 
     const buttonRemove = this.newElement.querySelector(this.cardSelectors.buttonRemove);
@@ -66,7 +66,7 @@ class Card {
 
   createCard() {
     const newCard = this._createCard();
-    this._addEventListeners(newCard);
+    this._addEventListeners();
     return newCard;
   }
 }
