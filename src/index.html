@@ -6,18 +6,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Место</title>
-    <link rel="stylesheet" href="./pages/index.css">
 </head>
 
 <body class="page">
 
     <header class="header">
-        <img class="header__logo" src="./images/logo.svg" alt="логотип">
+        <img class="header__logo" src="<%=require('./images/logo.svg')%>" alt="логотип">
     </header>
 
     <main>
         <section class="profile page__profile">
-            <img class="profile__avatar" src="./images/avatar.png" alt="аватар">
+            <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="аватар">
             <div class="profile__info">
                 <div class="profile__name">
                     <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -33,7 +32,7 @@
             <ul class="elements__grid">
                 <template class="template__element">
                     <li class="element">
-                        <img class="element__image clickable-button" src="./images/castle.png" alt="замок на горе">
+                        <img class="element__image clickable-button" src="<%=require('./images/castle.png')%>" alt="замок на горе">
                         <button class="element__trashcan clickable-button"></button>
                         <div class="element__like">
                             <h2 class="element__title"></h2>
@@ -88,8 +87,6 @@
     <footer class="footer">
         <p class="footer__copyright">&copy; 2022 Елена Кобзарь</p>
     </footer>
-
-    <script type="module" src="./scripts/index.js"></script>
 
 </body>
 
