@@ -1,4 +1,4 @@
-class FormValidator {
+export default class FormValidator {
   constructor(validationSettings, formElement) {
     this.settings = validationSettings;
     this.formElement = formElement;
@@ -64,7 +64,7 @@ class FormValidator {
       this._verifyButtonState();
     });
   }
-  
+
   enableValidation() {
   
     // для каждого инпата
@@ -73,19 +73,24 @@ class FormValidator {
     });
   }
   
-  verifyPopupButtonState() {
-    if (this.formElement) {
-      this._verifyButtonState();
-    }
-  }
+  // verifyPopupButtonState() {
+  //   if (this.formElement) {
+  //     this._verifyButtonState();
+  //   }
+  // }
   
-  verifyPopupInputsState() {
+  // verifyPopupInputsState() {
   
+  //   this.inputList.forEach((inputElement) => {
+  //     this._verifyInputState(inputElement);
+  //   });
+  // }
+
+  resetValidation() {
     this.inputList.forEach((inputElement) => {
-      this._verifyInputState(inputElement);
+      this._hideInputError(inputElement);
     });
+
+    this._verifyButtonState();
   }
 };
-
-
-export { FormValidator };

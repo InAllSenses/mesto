@@ -8,6 +8,43 @@ const validationSettings = {
   buttonDisabledClass: "popup__button_disabled",
 };
 
+const selectors = {
+  // popup
+  popupVisible: ".popup_opened",
+  inputSelector: ".popup__input",
+
+  
+  // edit user
+  showEditUser: ".profile__edit",
+  closeEditUser: ".popup-edit__close",
+  popupEditUser: ".popup-edit",
+
+  userName: ".profile__title",
+  userInfo: ".profile__subtitle",
+
+
+  // card
+  popupMakeCard: ".popup-add",
+  showMakeCard: ".profile__add",
+  closeMakeCard: ".popup-add__close",
+
+  cardTeplate: ".template__element",
+  placesWrap: ".elements__grid",
+
+
+  // image
+  popupImage: ".popup-image",
+  closeImage: ".popup-image__close",
+
+  popupImageTitle: ".popup-image__title",
+  popupImagePicture: ".popup-image__picture"
+};
+
+const classes = {
+  popupVisible: "popup_opened"
+}
+
+
 const initialCards = [
     {
       name: "Архыз",
@@ -35,4 +72,4 @@ const initialCards = [
     },
   ];
 
-export { validationSettings,  initialCards }
+export { validationSettings,  initialCards, selectors, classes }
