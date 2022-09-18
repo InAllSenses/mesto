@@ -10,7 +10,7 @@ import PopupWithForm from './PopupWithForm.js';
 
 import PopupWithImage from './PopupWithImage.js';
 
-import { validationSettings, initialCards, selectors, classes } from './constants.js';
+import { validationSettings, initialCards, cardSelectors, cardClasses, selectors, classes } from './constants.js';
 
 // GENERAL
 function makeFormValidatorByPopup(popupElement) {
@@ -20,7 +20,7 @@ function makeFormValidatorByPopup(popupElement) {
 }
 
 function makeCard(cardTitle, cardLink) {
-  const card = new Card(cardTitle, cardLink, selectors.cardTeplate, () => {
+  const card = new Card(cardTitle, cardLink, cardSelectors, cardClasses, () => {
     popupImage.open(cardTitle, cardLink);
   });
   return card.createCard();
@@ -47,13 +47,10 @@ const popupEditUser = new PopupWithForm(
     inputSelector: selectors.inputSelector,
     visibleClass: classes.popupVisible
   },
-  (event) => {
-    event.preventDefault();
-
-    const formData = popupEditUser._getInputValues();
+  (formValues) => {
     userInfo.setUserInfo({
-      name: formData['field-name'],
-      info: formData['field-profession']
+      name: formValues['field-name'],
+      info: formValues['field-profession']
     });
 
     popupEditUser.close();
@@ -68,7 +65,9 @@ document.querySelector(selectors.showEditUser).addEventListener("click", () => {
   formValues['field-name'] = userData.name;
   formValues['field-profession'] = userData.info;
 
-  popupEditUser.open(formValues);
+  popupEditUser.setInputValues(formValues);
+
+  popupEditUser.open();
   validatorUser.resetValidation();
 });
 
@@ -95,10 +94,7 @@ const popupMakeCard = new PopupWithForm(
     inputSelector: selectors.inputSelector,
     visibleClass: classes.popupVisible,
   },
-  (event) => {
-    event.preventDefault();
-
-    const formValues = popupMakeCard._getInputValues();
+  (formValues) => {
     const cardTitle = formValues['field-title'];
     const cardLink = formValues['field-link'];
 
@@ -111,11 +107,8 @@ const popupMakeCard = new PopupWithForm(
 
 popupMakeCard.setEventListeners();
 document.querySelector(selectors.showMakeCard).addEventListener("click", () => {
-  const formValues = {};
-  formValues['field-title'] = "";
-  formValues['field-link'] = "";
-
-  popupMakeCard.open(formValues);
+  popupMakeCard.resetForm();
+  popupMakeCard.open();
   validatorMake.resetValidation();
 });
 

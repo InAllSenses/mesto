@@ -1,23 +1,12 @@
 export default class Card {
-  constructor(name, link, templSelector, showPopupImage) {
+  constructor(name, link, cardSelectors, cardClasses, showPopupImage) {
     this.name = name;
     this.link = link;
-    this.templSelector = templSelector;
+
+    this.cardSelectors = cardSelectors;
+    this.cardClasses = cardClasses;
+
     this.showPopupImage = showPopupImage;
-
-    this.cardSelectors = {
-      template: templSelector,
-      item: ".element",
-      name: ".element__title",
-      link: ".element__image",
-
-      buttonRemove: ".element__trashcan",
-      buttonLike: ".element__heart",
-    };
-
-    this.cardClasses = {
-      buttonLikeActive: "element__heart_active",
-    };
   }
 
   _clickLike() {

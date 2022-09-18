@@ -28,7 +28,6 @@ const selectors = {
   showMakeCard: ".profile__add",
   closeMakeCard: ".popup-add__close",
 
-  cardTeplate: ".template__element",
   placesWrap: ".elements__grid",
 
 
@@ -44,6 +43,19 @@ const classes = {
   popupVisible: "popup_opened"
 }
 
+const cardSelectors = {
+  template: ".template__element",
+  item: ".element",
+  name: ".element__title",
+  link: ".element__image",
+
+  buttonRemove: ".element__trashcan",
+  buttonLike: ".element__heart",
+};
+
+const cardClasses = {
+  buttonLikeActive: "element__heart_active"
+};
 
 const initialCards = [
     {
@@ -72,4 +84,4 @@ const initialCards = [
     },
   ];
 
-export { validationSettings,  initialCards, selectors, classes }
+export { validationSettings, cardSelectors, cardClasses, initialCards, selectors, classes }

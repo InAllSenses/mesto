@@ -1,6 +1,6 @@
 .page__elements {
     margin: 51px 200px 0;
-
+    min-height: 20vh;
 }
 
 @media screen and (max-width: 1100px) {
