@@ -10,7 +10,14 @@ import PopupWithForm from './PopupWithForm.js';
 
 import PopupWithImage from './PopupWithImage.js';
 
-import { validationSettings, initialCards, cardSelectors, cardClasses, selectors, classes } from './constants.js';
+import { validationSettings, initialCards, cardSelectors, cardClasses, selectors, classes, apiConstants } from './constants.js';
+
+import Api from './Api.js';
+
+
+// API
+const api = new Api(apiConstants.token, apiConstants.baseUrl);
+
 
 // GENERAL
 function makeFormValidatorByPopup(popupElement) {
@@ -31,8 +38,24 @@ function makeCard(cardTitle, cardLink) {
 // USER INFO
 const userInfo = new UserInfo({
   nameSelector: selectors.userName,
-  infoSelector: selectors.userInfo
+  infoSelector: selectors.userInfo,
+  avatarSelector: selectors.userAvatar
 });
+
+api.getUserInfo().then((data) => {
+  userInfo.setUserInfo({
+    name: data.name,
+    info: data.about
+  });
+
+  userInfo.setAvatar(data.avatar);
+  userInfo.setId(data._id);
+
+}).catch((err) => {
+  console.log(err);
+});
+
+
 
 // validator
 const popupEditUserElement = document.querySelector(selectors.popupEditUser);

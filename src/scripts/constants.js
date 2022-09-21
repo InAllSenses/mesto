@@ -13,7 +13,6 @@ const selectors = {
   popupVisible: ".popup_opened",
   inputSelector: ".popup__input",
 
-  
   // edit user
   showEditUser: ".profile__edit",
   closeEditUser: ".popup-edit__close",
@@ -21,7 +20,7 @@ const selectors = {
 
   userName: ".profile__title",
   userInfo: ".profile__subtitle",
-
+  userAvatar: ".profile__avatar",
 
   // card
   popupMakeCard: ".popup-add",
@@ -30,18 +29,17 @@ const selectors = {
 
   placesWrap: ".elements__grid",
 
-
   // image
   popupImage: ".popup-image",
   closeImage: ".popup-image__close",
 
   popupImageTitle: ".popup-image__title",
-  popupImagePicture: ".popup-image__picture"
+  popupImagePicture: ".popup-image__picture",
 };
 
 const classes = {
-  popupVisible: "popup_opened"
-}
+  popupVisible: "popup_opened",
+};
 
 const cardSelectors = {
   template: ".template__element",
@@ -54,34 +52,47 @@ const cardSelectors = {
 };
 
 const cardClasses = {
-  buttonLikeActive: "element__heart_active"
+  buttonLikeActive: "element__heart_active",
 };
 
 const initialCards = [
-    {
-      name: "Архыз",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-    },
-    {
-      name: "Челябинская область",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-    },
-    {
-      name: "Иваново",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-    },
-    {
-      name: "Камчатка",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-    },
-    {
-      name: "Холмогорский район",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-    },
-    {
-      name: "Байкал",
-      link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-    },
-  ];
+  {
+    name: "Архыз",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
+  },
+  {
+    name: "Челябинская область",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
+  },
+  {
+    name: "Иваново",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
+  },
+  {
+    name: "Камчатка",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
+  },
+  {
+    name: "Холмогорский район",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
+  },
+  {
+    name: "Байкал",
+    link: "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
+  },
+];
 
-export { validationSettings, cardSelectors, cardClasses, initialCards, selectors, classes }
+const apiConstants = {
+  token: "1131d0bd-5b8f-45fb-8061-570667973a92",
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-50/users"
+};
+
+export {
+  validationSettings,
+  cardSelectors,
+  cardClasses,
+  initialCards,
+  selectors,
+  classes,
+  apiConstants,
+};
