@@ -51,7 +51,8 @@ api.getUserInfo().then((data) => {
   userInfo.setAvatar(data.avatar);
   userInfo.setId(data._id);
 
-}).catch((err) => {
+})
+.catch((err) => {
   console.log(err);
 });
 
@@ -71,12 +72,22 @@ const popupEditUser = new PopupWithForm(
     visibleClass: classes.popupVisible
   },
   (formValues) => {
-    userInfo.setUserInfo({
+    api.patchUserInfo({
       name: formValues['field-name'],
       info: formValues['field-profession']
+    })
+    .then((data) => {
+      userInfo.setUserInfo({
+        name: data.name,
+        info: data.about
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupEditUser.close();
     });
-
-    popupEditUser.close();
   }
 );
 
