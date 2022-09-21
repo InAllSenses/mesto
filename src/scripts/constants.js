@@ -84,7 +84,7 @@ const initialCards = [
 
 const apiConstants = {
   token: "1131d0bd-5b8f-45fb-8061-570667973a92",
-  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-50/users"
+  baseUrl: "https://mesto.nomoreparties.co/v1/cohort-50"
 };
 
 export {

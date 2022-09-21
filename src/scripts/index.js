@@ -10,7 +10,7 @@ import PopupWithForm from './PopupWithForm.js';
 
 import PopupWithImage from './PopupWithImage.js';
 
-import { validationSettings, initialCards, cardSelectors, cardClasses, selectors, classes, apiConstants } from './constants.js';
+import { validationSettings, cardSelectors, cardClasses, selectors, classes, apiConstants } from './constants.js';
 
 import Api from './Api.js';
 
@@ -97,12 +97,19 @@ document.querySelector(selectors.showEditUser).addEventListener("click", () => {
 
 
 // CARDS
-const cardsList = new Section({ items: initialCards, renderer: (item) => {
-  const cardElement = makeCard(item.name, item.link);
-  cardsList.addItem(cardElement);
-}}, selectors.placesWrap);
 
-cardsList.renderItems();
+api.getInitialCards().then((data) => {
+  const cardsList = new Section({ items: data, renderer: (item) => {
+    const cardElement = makeCard(item.name, item.link);
+    cardsList.addItem(cardElement);
+  }}, selectors.placesWrap);
+  
+  cardsList.renderItems();
+}).catch((err) => {
+  console.log(err);
+});
+
+
 
 // validator
 const popupMakeCardElement = document.querySelector(selectors.popupMakeCard);
