@@ -1,7 +1,8 @@
 export default class Card {
-  constructor(name, link, cardSelectors, cardClasses, showPopupImage) {
-    this.name = name;
-    this.link = link;
+  constructor({name, link, likesCount}, cardSelectors, cardClasses, showPopupImage) {
+    this._name = name;
+    this._link = link;
+    this._likesCount = likesCount
 
     this.cardSelectors = cardSelectors;
     this.cardClasses = cardClasses;
@@ -19,7 +20,7 @@ export default class Card {
   }
 
   _clickLink() {
-    this.showPopupImage(this.name, this.link);
+    this.showPopupImage(this._name, this._link);
   }
 
   _createCard() {
@@ -37,10 +38,17 @@ export default class Card {
     this.newElementLink = this.newElement.querySelector(
       this.cardSelectors.link
     );
+    this._likesCountElement = this.newElement.querySelector(
+      this.cardSelectors.likesCount
+    );
 
-    newElementName.textContent = this.name;
-    this.newElementLink.src = this.link;
-    this.newElementLink.alt = this.name;
+    // image
+    newElementName.textContent = this._name;
+    this.newElementLink.src = this._link;
+    this.newElementLink.alt = this._name;
+
+    // like
+    this._likesCountElement.textContent = this._likesCount;
 
     return this.newElement;
   }

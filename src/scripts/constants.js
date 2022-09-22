@@ -49,6 +49,7 @@ const cardSelectors = {
 
   buttonRemove: ".element__trashcan",
   buttonLike: ".element__heart",
+  likesCount: ".element__like-count",
 };
 
 const cardClasses = {

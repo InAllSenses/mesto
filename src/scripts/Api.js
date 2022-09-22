@@ -20,7 +20,7 @@ export default class Api {
     });
   }
 
-  patchUserInfo({name, info}) {
+  patchUserInfo({ name, info }) {
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
       headers: {
@@ -47,6 +47,27 @@ export default class Api {
       headers: {
         authorization: this._token,
       },
+    })
+    .then((res) => {
+      if (res.ok) {
+        return res.json();
+      }
+
+      return Promise.reject(`Ошибка: ${res.status}`);
+    });
+  }
+
+  postNewCard({ name, link }) {
+    return fetch(this._baseUrl + "/cards", {
+      method: "POST",
+      headers: {
+        authorization: this._token,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        name: name,
+        link: link,
+      }),
     })
     .then((res) => {
       if (res.ok) {

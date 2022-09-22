@@ -26,8 +26,14 @@ function makeFormValidatorByPopup(popupElement) {
   return validator;
 }
 
-function makeCard(cardTitle, cardLink) {
-  const card = new Card(cardTitle, cardLink, cardSelectors, cardClasses, () => {
+function makeCard(cardData) {
+  const cardParams = {
+    name: cardData.name,
+    link: cardData.link,
+    likesCount: cardData.likes.length
+  }
+
+  const card = new Card(cardParams, cardSelectors, cardClasses, () => {
     popupImage.open(cardTitle, cardLink);
   });
   return card.createCard();
@@ -111,7 +117,7 @@ document.querySelector(selectors.showEditUser).addEventListener("click", () => {
 
 api.getInitialCards().then((data) => {
   const cardsList = new Section({ items: data, renderer: (item) => {
-    const cardElement = makeCard(item.name, item.link);
+    const cardElement = makeCard(item);
     cardsList.addItem(cardElement);
   }}, selectors.placesWrap);
   
@@ -136,13 +142,20 @@ const popupMakeCard = new PopupWithForm(
     visibleClass: classes.popupVisible,
   },
   (formValues) => {
-    const cardTitle = formValues['field-title'];
-    const cardLink = formValues['field-link'];
-
-    const cardElement = makeCard(cardTitle, cardLink);
-    cardsList.addItem(cardElement);
-
-    popupMakeCard.close();
+    api.postNewCard({
+      name: formValues['field-title'],
+      link: formValues['field-link']
+    })
+    .then((data) => {
+      const cardElement = makeCard(data);
+      cardsList.addItem(cardElement);
+    })
+    .catch((err) => {
+      console.log(err);
+    })
+    .finally(() => {
+      popupMakeCard.close();
+    });
   }
 );
 

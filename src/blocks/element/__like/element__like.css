@@ -1,7 +1,7 @@
 .element__like {
     display: flex;
-    margin: 25px 15px 31px 21px;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+
+    margin: 0;
+    text-align: center;
 }
