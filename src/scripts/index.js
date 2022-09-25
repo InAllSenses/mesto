@@ -7,8 +7,8 @@ import UserInfo from './UserInfo.js';
 
 import FormValidator from './FormValidator.js';
 import PopupWithForm from './PopupWithForm.js';
-
 import PopupWithImage from './PopupWithImage.js';
+import PopupWithConfirmation from './PopupWithConfirmation.js';
 
 import { validationSettings, cardSelectors, cardClasses, selectors, classes, apiConstants } from './constants.js';
 
@@ -26,8 +26,31 @@ function makeFormValidatorByPopup(popupElement) {
   return validator;
 }
 
+
+// popup delete card
+const popupDeleteCard = new PopupWithConfirmation(
+  {
+    popupSelector: selectors.popupDeleteCard,
+    closeSelector: selectors.closePopupButton,
+    visibleClass: classes.popupVisible,
+  },
+  ({cardId}) => {
+    api.deleteCard(cardId)
+    .catch((err) => {
+      console.log(err);
+    }).finally(() => {
+      popupDeleteCard.close();
+    });
+
+  }
+);
+popupDeleteCard.setEventListeners();
+
+
+
 function makeCard(cardData) {
   const cardParams = {
+    id: cardData._id,
     name: cardData.name,
     link: cardData.link,
     likesCount: cardData.likes.length
@@ -35,6 +58,10 @@ function makeCard(cardData) {
 
   const card = new Card(cardParams, cardSelectors, cardClasses, () => {
     popupImage.open(cardTitle, cardLink);
+  },
+  (cardId) => {
+    popupDeleteCard.setSubmitParameters({cardId: cardId});
+    popupDeleteCard.open();
   });
   return card.createCard();
 }
@@ -133,7 +160,7 @@ const popupMakeCardElement = document.querySelector(selectors.popupMakeCard);
 const validatorMake = makeFormValidatorByPopup(popupMakeCardElement);
 validatorMake.enableValidation();
 
-// popup
+// popup make
 const popupMakeCard = new PopupWithForm(
   {
     popupSelector: selectors.popupMakeCard,

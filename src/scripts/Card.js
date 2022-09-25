@@ -1,5 +1,6 @@
 export default class Card {
-  constructor({name, link, likesCount}, cardSelectors, cardClasses, showPopupImage) {
+  constructor({id, name, link, likesCount}, cardSelectors, cardClasses, clickImageCallback, clickRemoveCallback) {
+    this._id = id;
     this._name = name;
     this._link = link;
     this._likesCount = likesCount
@@ -7,7 +8,8 @@ export default class Card {
     this.cardSelectors = cardSelectors;
     this.cardClasses = cardClasses;
 
-    this.showPopupImage = showPopupImage;
+    this._clickImageCallback = clickImageCallback;
+    this._clickRemoveCallback = clickRemoveCallback;
   }
 
   _clickLike() {
@@ -20,7 +22,11 @@ export default class Card {
   }
 
   _clickLink() {
-    this.showPopupImage(this._name, this._link);
+    this._clickImageCallback(this._name, this._link);
+  }
+
+  _clickRemove() {
+    this._clickRemoveCallback(this._id);
   }
 
   _createCard() {

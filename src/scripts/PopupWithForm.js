@@ -35,7 +35,7 @@ export default class PopupWithForm extends Popup {
       input.value = "";
     });
   }
-
+  
   setEventListeners() {
     super.setEventListeners();
 

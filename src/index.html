@@ -49,7 +49,7 @@
 
 
     <div class="popup popup-add">
-        <div class="popup__container popup-add__container">
+        <div class="popup__container">
             <button type="button" class="popup__close popup-add__close clickable-button"></button>
             <h2 class="popup__title">Новое место</h2>
             <form name="id-information" class="popup__information" novalidate>
@@ -65,7 +65,7 @@
     </div>
 
     <div class="popup popup-edit">
-        <div class="popup__container popup-edit__container">
+        <div class="popup__container">
             <button type="button" class="popup__close popup-edit__close clickable-button"></button>
             <h2 class="popup__title">Редактировать профиль</h2>
             <form name="id-information" class="popup__information" novalidate>
@@ -76,6 +76,14 @@
                 <span class="popup__input-error input-profession-error"></span>
                 <button type="submit" class="popup__button popup__button_save clickable-button">Сохранить</button>
             </form>
+        </div>
+    </div>
+
+    <div class="popup popup-delete">
+        <div class="popup__container">
+            <button type="button" class="popup__close clickable-button"></button>
+            <h2 class="popup__title">Вы уверены?</h2>
+            <button type="button" class="popup__button popup__button_delete clickable-button">Да</button>
         </div>
     </div>
 

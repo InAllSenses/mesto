@@ -27,6 +27,9 @@ const selectors = {
   showMakeCard: ".profile__add",
   closeMakeCard: ".popup-add__close",
 
+  popupDeleteCard: ".popup-delete",
+  closePopupButton: ".popup__close",
+
   placesWrap: ".elements__grid",
 
   // image
