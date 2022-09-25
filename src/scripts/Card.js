@@ -1,24 +1,28 @@
 export default class Card {
-  constructor({id, name, link, likesCount}, cardSelectors, cardClasses, clickImageCallback, clickRemoveCallback) {
+  constructor({id, name, link, likes, userId}, cardSelectors, cardClasses, clickImageCallback, clickRemoveCallback, clickLikeCallback) {
     this._id = id;
     this._name = name;
     this._link = link;
-    this._likesCount = likesCount
+    this._likes = likes;
+    this._userId = userId;
 
     this.cardSelectors = cardSelectors;
     this.cardClasses = cardClasses;
 
     this._clickImageCallback = clickImageCallback;
     this._clickRemoveCallback = clickRemoveCallback;
+    this._clickLikeCallback = clickLikeCallback;
+  }
+
+  _isLiked() {
+    return this._likes.some((like) => {
+      return like._id === this._userId;
+    });
   }
 
   _clickLike() {
-    this.buttonLike.classList.toggle(this.cardClasses.buttonLikeActive);
-  }
-
-  _clickRemove() {
-    this.newElement.remove();
-    this.newElement = null;
+    this._clickLikeCallback(this._id, this._isLiked());
+    // this.buttonLike.classList.toggle(this.cardClasses.buttonLikeActive);
   }
 
   _clickLink() {
@@ -27,6 +31,8 @@ export default class Card {
 
   _clickRemove() {
     this._clickRemoveCallback(this._id);
+    // this.newElement.remove();
+    // this.newElement = null;
   }
 
   _createCard() {
@@ -54,7 +60,7 @@ export default class Card {
     this.newElementLink.alt = this._name;
 
     // like
-    this._likesCountElement.textContent = this._likesCount;
+    this._refreshLikeState();
 
     return this.newElement;
   }
@@ -68,8 +74,25 @@ export default class Card {
     this.newElementLink.addEventListener("click", () => { this._clickLink(); });
   }
 
+  _refreshLikeState() {
+    if (this._isLiked()) {
+      this.buttonLike.classList.add(this.cardClasses.buttonLikeActive);
+    }
+    else {
+      this.buttonLike.classList.remove(this.cardClasses.buttonLikeActive);
+    }
+
+    this._likesCountElement.textContent = this._likes.length;
+  }
+
+  setLikesList(likes) {
+    this._likes = likes;
+    this._refreshLikeState();
+  }
+
   createCard() {
     const newCard = this._createCard();
+    this._refreshLikeState();
     this._addEventListeners();
     return newCard;
   }

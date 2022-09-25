@@ -2,94 +2,75 @@ export default class Api {
   constructor(token, baseUrl) {
     this._token = token;
     this._baseUrl = baseUrl;
+
+    this._headers = {
+      authorization: this._token,
+      "Content-Type": "application/json",
+    };
+  }
+
+  _handleFetchResult(res) {
+    if (res.ok) {
+      return res.json();
+    }
+
+    return Promise.reject(`Ошибка: ${res.status}`);
   }
 
   getUserInfo() {
     return fetch(this._baseUrl + "/users/me", {
       method: "GET",
-      headers: {
-        authorization: this._token,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+      headers: this._headers,
+    }).then(this._handleFetchResult);
   }
 
   patchUserInfo({ name, info }) {
     return fetch(this._baseUrl + "/users/me", {
       method: "PATCH",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         about: info,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    }).then(this._handleFetchResult);
   }
 
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
       method: "GET",
-      headers: {
-        authorization: this._token,
-      },
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+      headers: this._headers,
+    }).then(this._handleFetchResult);
   }
 
   postNewCard({ name, link }) {
     return fetch(this._baseUrl + "/cards", {
       method: "POST",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: name,
         link: link,
       }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
-
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+    }).then(this._handleFetchResult);
   }
 
   deleteCard(cardId) {
     return fetch(this._baseUrl + "/cards/" + cardId, {
       method: "DELETE",
-      headers: {
-        authorization: this._token,
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        _id: cardId,
-      }),
-    }).then((res) => {
-      if (res.ok) {
-        return res.json();
-      }
+      headers: this._headers,
+    }).then(this._handleFetchResult);
+  }
 
-      return Promise.reject(`Ошибка: ${res.status}`);
-    });
+  putLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+        method: "PUT",
+        headers: this._headers,
+    }).then(this._handleFetchResult);
+  }
+
+  deleteLike(cardId) {
+    return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
+        method: "DELETE",
+        headers: this._headers,
+    }).then(this._handleFetchResult);
   }
 }

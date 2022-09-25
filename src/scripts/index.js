@@ -46,14 +46,22 @@ const popupDeleteCard = new PopupWithConfirmation(
 );
 popupDeleteCard.setEventListeners();
 
-
+function toggleCardLike(cardId, isLiked) {
+  if (isLiked) {
+    return api.deleteLike(cardId);
+  }
+  else {
+    return api.putLike(cardId);
+  }
+}
 
 function makeCard(cardData) {
   const cardParams = {
     id: cardData._id,
     name: cardData.name,
     link: cardData.link,
-    likesCount: cardData.likes.length
+    likes: cardData.likes,
+    userId: userInfo.getId()
   }
 
   const card = new Card(cardParams, cardSelectors, cardClasses, () => {
@@ -62,7 +70,17 @@ function makeCard(cardData) {
   (cardId) => {
     popupDeleteCard.setSubmitParameters({cardId: cardId});
     popupDeleteCard.open();
+  },
+  (cardId, isLiked) => {
+    toggleCardLike(cardId, isLiked)
+    .then((res) => {
+      card.setLikesList(res.likes);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
   });
+
   return card.createCard();
 }
 
