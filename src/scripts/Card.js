@@ -1,10 +1,11 @@
 export default class Card {
-  constructor({id, name, link, likes, userId}, cardSelectors, cardClasses, clickImageCallback, clickRemoveCallback, clickLikeCallback) {
+  constructor({id, name, link, likes, userId, ownerId}, cardSelectors, cardClasses, clickImageCallback, clickRemoveCallback, clickLikeCallback) {
     this._id = id;
     this._name = name;
     this._link = link;
     this._likes = likes;
     this._userId = userId;
+    this._ownerId = ownerId;
 
     this.cardSelectors = cardSelectors;
     this.cardClasses = cardClasses;
@@ -22,7 +23,6 @@ export default class Card {
 
   _clickLike() {
     this._clickLikeCallback(this._id, this._isLiked());
-    // this.buttonLike.classList.toggle(this.cardClasses.buttonLikeActive);
   }
 
   _clickLink() {
@@ -35,14 +35,18 @@ export default class Card {
     // this.newElement = null;
   }
 
+  _refreshRemoveVisibility() {
+    if (this._ownerId === this._userId) {
+      this._buttonRemove.classList.add(this.cardClasses.buttonRemoveVisible);
+    }
+  }
+
   _createCard() {
     const elementTemplate = document.querySelector(this.cardSelectors.template);
     const element = elementTemplate.content.querySelector(
       this.cardSelectors.item
     );
     this.newElement = element.cloneNode(true);
-
-    this.buttonLike = this.newElement.querySelector(this.cardSelectors.buttonLike);
 
     const newElementName = this.newElement.querySelector(
       this.cardSelectors.name
@@ -60,16 +64,19 @@ export default class Card {
     this.newElementLink.alt = this._name;
 
     // like
+    this.buttonLike = this.newElement.querySelector(this.cardSelectors.buttonLike);
     this._refreshLikeState();
+
+    // remove
+    this._buttonRemove = this.newElement.querySelector(this.cardSelectors.buttonRemove);
+    this._refreshRemoveVisibility();
 
     return this.newElement;
   }
 
   _addEventListeners() {
     this.buttonLike.addEventListener("click", () => { this._clickLike(); });
-
-    const buttonRemove = this.newElement.querySelector(this.cardSelectors.buttonRemove);
-    buttonRemove.addEventListener("click", () => { this._clickRemove(); });
+    this._buttonRemove.addEventListener("click", () => { this._clickRemove(); });
 
     this.newElementLink.addEventListener("click", () => { this._clickLink(); });
   }

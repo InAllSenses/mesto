@@ -61,7 +61,8 @@ function makeCard(cardData) {
     name: cardData.name,
     link: cardData.link,
     likes: cardData.likes,
-    userId: userInfo.getId()
+    userId: userInfo.getId(),
+    ownerId: cardData.owner._id,
   }
 
   const card = new Card(cardParams, cardSelectors, cardClasses, () => {

@@ -57,6 +57,7 @@ const cardSelectors = {
 
 const cardClasses = {
   buttonLikeActive: "element__heart_active",
+  buttonRemoveVisible: "element__trashcan_visible",
 };
 
 const initialCards = [
