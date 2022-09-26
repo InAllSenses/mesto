@@ -18,9 +18,12 @@ const selectors = {
   closeEditUser: ".popup-edit__close",
   popupEditUser: ".popup-edit",
 
+  popupEditAvatar: ".popup-avatar",
+  buttonEditAvatar: ".profile__avatar-edit",
+
   userName: ".profile__title",
   userInfo: ".profile__subtitle",
-  userAvatar: ".profile__avatar",
+  userAvatar: ".profile__image",
 
   // card
   popupMakeCard: ".popup-add",

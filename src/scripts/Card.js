@@ -30,9 +30,7 @@ export default class Card {
   }
 
   _clickRemove() {
-    this._clickRemoveCallback(this._id);
-    // this.newElement.remove();
-    // this.newElement = null;
+    this._clickRemoveCallback(this);
   }
 
   _refreshRemoveVisibility() {
@@ -95,6 +93,15 @@ export default class Card {
   setLikesList(likes) {
     this._likes = likes;
     this._refreshLikeState();
+  }
+
+  getId() {
+    return this._id;
+  }
+
+  deleteCard() {
+    this.newElement.remove();
+    this.newElement = null;
   }
 
   createCard() {

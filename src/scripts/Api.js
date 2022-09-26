@@ -35,6 +35,16 @@ export default class Api {
     }).then(this._handleFetchResult);
   }
 
+  patchAvatar({ link }) {
+    return fetch(`${this._baseUrl}/users/me/avatar`, {
+      method: "PATCH",
+      headers: this._headers,
+      body: JSON.stringify({
+        avatar: link,
+      })
+    }).then(this._handleFetchResult);
+  }
+
   getInitialCards() {
     return fetch(this._baseUrl + "/cards", {
       method: "GET",
@@ -62,15 +72,15 @@ export default class Api {
 
   putLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: "PUT",
-        headers: this._headers,
+      method: "PUT",
+      headers: this._headers,
     }).then(this._handleFetchResult);
   }
 
   deleteLike(cardId) {
     return fetch(`${this._baseUrl}/cards/${cardId}/likes`, {
-        method: "DELETE",
-        headers: this._headers,
+      method: "DELETE",
+      headers: this._headers,
     }).then(this._handleFetchResult);
   }
 }
