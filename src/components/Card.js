@@ -39,12 +39,15 @@ export default class Card {
     }
   }
 
-  _createCard() {
+  _getTemplate() {
     const elementTemplate = document.querySelector(this._cardSelectors.template);
-    const element = elementTemplate.content.querySelector(
-      this._cardSelectors.item
-    );
-    this.newElement = element.cloneNode(true);
+    const element = elementTemplate.content.querySelector(this._cardSelectors.item);
+
+    return element.cloneNode(true);
+  }
+
+  _createCard() {
+    this.newElement = this._getTemplate();
 
     const newElementName = this.newElement.querySelector(
       this._cardSelectors.name

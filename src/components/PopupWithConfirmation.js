@@ -1,5 +1,7 @@
 import Popup from "./Popup.js";
 
+import { setSubmitButtonText } from "../utils/utils.js"
+
 export default class PopupWithConfirmation extends Popup {
   constructor({ popupSelector, closeSelector, submitSelector, visibleClass }, submitCallback) {
     super({
@@ -20,12 +22,7 @@ export default class PopupWithConfirmation extends Popup {
   }
 
   setPopupInProcess(inProcess) {
-    if (inProcess) {
-      this._buttonSubmit.textContent = this._buttonTextProcess;
-    }
-    else {
-      this._buttonSubmit.textContent = this._buttonTextDefault;
-    }
+    setSubmitButtonText(this._buttonSubmit, inProcess, this._buttonTextDefault, this._buttonTextProcess);
   }
 
   setEventListeners() {

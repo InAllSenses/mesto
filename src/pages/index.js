@@ -1,14 +1,14 @@
-import "../pages/index.css";
+import "./index.css";
 
-import Card from "./Card.js";
-import Section from "./Section.js";
+import Card from "../components/Card.js";
+import Section from "../components/Section.js";
 
-import UserInfo from "./UserInfo.js";
+import UserInfo from "../components/UserInfo.js";
 
-import FormValidator from "./FormValidator.js";
-import PopupWithForm from "./PopupWithForm.js";
-import PopupWithImage from "./PopupWithImage.js";
-import PopupWithConfirmation from "./PopupWithConfirmation.js";
+import FormValidator from "../components/FormValidator.js";
+import PopupWithForm from "../components/PopupWithForm.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
 
 import {
   validationSettings,
@@ -17,9 +17,9 @@ import {
   selectors,
   classes,
   apiConstants,
-} from "./constants.js";
+} from "../utils/constants.js";
 
-import Api from "./Api.js";
+import Api from "../components/Api.js";
 
 
 
