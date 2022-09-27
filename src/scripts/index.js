@@ -124,9 +124,11 @@ const popupEditUser = new PopupWithForm(
     popupSelector: selectors.popupEditUser,
     closeSelector: selectors.closeEditUser,
     inputSelector: selectors.inputSelector,
+    submitSelector: validationSettings.submitButtonSelector,
     visibleClass: classes.popupVisible
   },
   (formValues) => {
+    popupEditUser.setPopupInProcess(true);
     api.patchUserInfo({
       name: formValues['field-name'],
       info: formValues['field-profession']
@@ -155,6 +157,7 @@ document.querySelector(selectors.showEditUser).addEventListener("click", () => {
   formValues['field-profession'] = userData.info;
 
   popupEditUser.setInputValues(formValues);
+  popupEditUser.setPopupInProcess(false);
 
   popupEditUser.open();
   validatorUser.resetValidation();
@@ -174,9 +177,11 @@ const popupEditAvatar = new PopupWithForm(
     popupSelector: selectors.popupEditAvatar,
     closeSelector: selectors.closePopupButton,
     inputSelector: selectors.inputSelector,
+    submitSelector: validationSettings.submitButtonSelector,
     visibleClass: classes.popupVisible,
   },
   (formValues) => {
+    popupEditAvatar.setPopupInProcess(true);
     api
       .patchAvatar({
         link: formValues["field-avatar"],
@@ -201,6 +206,7 @@ buttonEditAvatar.addEventListener("click", (event) => {
   formValues["field-avatar"] = userInfo.getAvatar();
 
   popupEditAvatar.setInputValues(formValues);
+  popupEditAvatar.setPopupInProcess(false);
   popupEditAvatar.open();
 
   validatorAvatar.resetValidation();
@@ -235,9 +241,11 @@ const popupMakeCard = new PopupWithForm(
     popupSelector: selectors.popupMakeCard,
     closeSelector: selectors.closeMakeCard,
     inputSelector: selectors.inputSelector,
+    submitSelector: validationSettings.submitButtonSelector,
     visibleClass: classes.popupVisible,
   },
   (formValues) => {
+    popupMakeCard.setPopupInProcess(true);
     api.postNewCard({
       name: formValues['field-title'],
       link: formValues['field-link']
@@ -258,6 +266,7 @@ const popupMakeCard = new PopupWithForm(
 popupMakeCard.setEventListeners();
 document.querySelector(selectors.showMakeCard).addEventListener("click", () => {
   popupMakeCard.resetForm();
+  popupMakeCard.setPopupInProcess(false);
   popupMakeCard.open();
   validatorMake.resetValidation();
 });

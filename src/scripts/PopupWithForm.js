@@ -1,7 +1,7 @@
 import Popup from "./Popup.js";
 
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, closeSelector, inputSelector, visibleClass}, submitCallback) {
+  constructor({popupSelector, closeSelector, inputSelector, submitSelector, visibleClass}, submitCallback) {
     super({
       popupSelector: popupSelector,
       closeSelector: closeSelector,
@@ -10,12 +10,10 @@ export default class PopupWithForm extends Popup {
 
     this._submitCallback = submitCallback;
     this._inputList = this._popup.querySelectorAll(inputSelector);
-  }
+    this._buttonSubmit = this._popup.querySelector(submitSelector);
 
-  setInputValues(formValues) {
-    this._inputList.forEach((inputElement) => {
-      inputElement.value = formValues[inputElement.name];
-    });
+    this._buttonTextDefault = this._buttonSubmit.textContent;
+    this._buttonTextProcess = "Сохранение...";
   }
 
   _getInputValues() {
@@ -28,6 +26,21 @@ export default class PopupWithForm extends Popup {
     });
 
     return this._formValues;
+  }
+
+  setPopupInProcess(inProcess) {
+    if (inProcess) {
+      this._buttonSubmit.textContent = this._buttonTextProcess;
+    }
+    else {
+      this._buttonSubmit.textContent = this._buttonTextDefault;
+    }
+  }
+
+  setInputValues(formValues) {
+    this._inputList.forEach((inputElement) => {
+      inputElement.value = formValues[inputElement.name];
+    });
   }
 
   resetForm() {
