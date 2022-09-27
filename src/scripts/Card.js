@@ -7,8 +7,8 @@ export default class Card {
     this._userId = userId;
     this._ownerId = ownerId;
 
-    this.cardSelectors = cardSelectors;
-    this.cardClasses = cardClasses;
+    this._cardSelectors = cardSelectors;
+    this._cardClasses = cardClasses;
 
     this._clickImageCallback = clickImageCallback;
     this._clickRemoveCallback = clickRemoveCallback;
@@ -35,25 +35,25 @@ export default class Card {
 
   _refreshRemoveVisibility() {
     if (this._ownerId === this._userId) {
-      this._buttonRemove.classList.add(this.cardClasses.buttonRemoveVisible);
+      this._buttonRemove.classList.add(this._cardClasses.buttonRemoveVisible);
     }
   }
 
   _createCard() {
-    const elementTemplate = document.querySelector(this.cardSelectors.template);
+    const elementTemplate = document.querySelector(this._cardSelectors.template);
     const element = elementTemplate.content.querySelector(
-      this.cardSelectors.item
+      this._cardSelectors.item
     );
     this.newElement = element.cloneNode(true);
 
     const newElementName = this.newElement.querySelector(
-      this.cardSelectors.name
+      this._cardSelectors.name
     );
     this.newElementLink = this.newElement.querySelector(
-      this.cardSelectors.link
+      this._cardSelectors.link
     );
     this._likesCountElement = this.newElement.querySelector(
-      this.cardSelectors.likesCount
+      this._cardSelectors.likesCount
     );
 
     // image
@@ -62,11 +62,11 @@ export default class Card {
     this.newElementLink.alt = this._name;
 
     // like
-    this.buttonLike = this.newElement.querySelector(this.cardSelectors.buttonLike);
+    this.buttonLike = this.newElement.querySelector(this._cardSelectors.buttonLike);
     this._refreshLikeState();
 
     // remove
-    this._buttonRemove = this.newElement.querySelector(this.cardSelectors.buttonRemove);
+    this._buttonRemove = this.newElement.querySelector(this._cardSelectors.buttonRemove);
     this._refreshRemoveVisibility();
 
     return this.newElement;
@@ -81,10 +81,10 @@ export default class Card {
 
   _refreshLikeState() {
     if (this._isLiked()) {
-      this.buttonLike.classList.add(this.cardClasses.buttonLikeActive);
+      this.buttonLike.classList.add(this._cardClasses.buttonLikeActive);
     }
     else {
-      this.buttonLike.classList.remove(this.cardClasses.buttonLikeActive);
+      this.buttonLike.classList.remove(this._cardClasses.buttonLikeActive);
     }
 
     this._likesCountElement.textContent = this._likes.length;
