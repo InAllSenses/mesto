@@ -1,9 +1,7 @@
 import Popup from "./Popup.js";
 
-import { setSubmitButtonText } from "../utils/utils.js"
-
 export default class PopupWithForm extends Popup {
-  constructor({popupSelector, closeSelector, inputSelector, submitSelector, visibleClass}, submitCallback) {
+  constructor({popupSelector, closeSelector, inputSelector, submitSelector, visibleClass}, submitCallback, setButtonTextCallback) {
     super({
       popupSelector: popupSelector,
       closeSelector: closeSelector,
@@ -16,6 +14,8 @@ export default class PopupWithForm extends Popup {
 
     this._buttonTextDefault = this._buttonSubmit.textContent;
     this._buttonTextProcess = "Сохранение...";
+
+    this._setButtonTextCallback = setButtonTextCallback;
   }
 
   _getInputValues() {
@@ -31,7 +31,7 @@ export default class PopupWithForm extends Popup {
   }
 
   setPopupInProcess(inProcess) {
-    setSubmitButtonText(this._buttonSubmit, inProcess, this._buttonTextDefault, this._buttonTextProcess);
+    this._setButtonTextCallback(this._buttonSubmit, inProcess, this._buttonTextDefault, this._buttonTextProcess);
   }
 
   setInputValues(formValues) {

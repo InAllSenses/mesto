@@ -9,6 +9,7 @@ import FormValidator from "../components/FormValidator.js";
 import PopupWithForm from "../components/PopupWithForm.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithConfirmation from "../components/PopupWithConfirmation.js";
+import Api from "../components/Api.js";
 
 import {
   validationSettings,
@@ -19,7 +20,7 @@ import {
   apiConstants,
 } from "../utils/constants.js";
 
-import Api from "../components/Api.js";
+import { setSubmitButtonText } from "../utils/utils.js"
 
 
 
@@ -118,7 +119,8 @@ const popupEditUser = new PopupWithForm(
       .finally(() => {
         popupEditUser.close();
       });
-  }
+  },
+  setSubmitButtonText
 );
 popupEditUser.setEventListeners();
 
@@ -169,7 +171,8 @@ const popupEditAvatar = new PopupWithForm(
       .finally(() => {
         popupEditAvatar.close();
       });
-  }
+  },
+  setSubmitButtonText
 );
 popupEditAvatar.setEventListeners();
 
@@ -226,7 +229,8 @@ const popupMakeCard = new PopupWithForm(
       .finally(() => {
         popupMakeCard.close();
       });
-  }
+  },
+  setSubmitButtonText
 );
 popupMakeCard.setEventListeners();
 
@@ -251,7 +255,8 @@ const popupDeleteCard = new PopupWithConfirmation(
       .finally(() => {
         popupDeleteCard.close();
       });
-  }
+  },
+  setSubmitButtonText
 );
 popupDeleteCard.setEventListeners();
 
